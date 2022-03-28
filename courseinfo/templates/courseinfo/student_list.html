@@ -1,0 +1,21 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Student List
+{% endblock %}
+{% block content %}
+    <h2>Student List</h2>
+    <div>
+     <a href="{% url 'courseinfo_student_create_urlpattern' %}">
+        Create New Student</a>
+    </div>
+    <ul>
+        {% for student in student_list %}
+            <li>
+                <a href="{{ student.get_absolute_url }}">{{ student }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no student available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

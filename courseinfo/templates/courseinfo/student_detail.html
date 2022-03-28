@@ -1,0 +1,48 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Student - {{ student }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ student }}</h2>
+    <ul>
+        <li>
+            <a href="{{ student.get_update_url }}">Edit Student</a>
+            <a href="{{ student.get_delete_url }}">Delete Student</a>
+        </li>
+    </ul>
+
+    <section>
+        <table>
+         <tr>
+                <th>First Name:</th>
+                <td>{{ student.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td>{{ student.last_name }}</td>
+            </tr>
+            {% if student.disambiguator %}
+                <tr>
+                    <th>Disambiguator:</th>
+                    <td>{{ student.disambiguator }}</td>
+                </tr>
+            {% endif %}
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Registrations</h3>
+        <ul>
+            {% for registration in registration_list %}
+                <li>
+                    <a href="{{ registration.get_absolute_url }}">{{ registration.student }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no students registered for this section.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

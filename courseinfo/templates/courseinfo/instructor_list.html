@@ -1,0 +1,21 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Instructor List
+{% endblock %}
+{% block content %}
+    <h2>Instructor List</h2>
+    <div>
+     <a href="{% url 'courseinfo_instructor_create_urlpattern' %}">
+        Create New Instructor</a>
+    </div>
+    <ul>
+        {% for instructor in instructor_list %}
+            <li>
+                <a href="{{ instructor.get_absolute_url }}">{{ instructor }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no instructor available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
