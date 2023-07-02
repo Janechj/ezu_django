@@ -1,4 +1,4 @@
-ccsidhjk:w#!/usr/bin/env python
+iccsidhjk:w#!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
